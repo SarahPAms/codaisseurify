@@ -9,20 +9,25 @@ class SongsController < ApplicationController
   end
 
   def new
-    @song = Song.new
+    @songs = Song.new
   end
 
   def create
+    @songs = Song.new(song_params)
+
+    if @songs.save
+        redirect_to @songs
+    else
+      render "new", notice: "Song has not been saved"
+    end
   end
 
   def edit
-  end
-
-  def update
+    @songs = Song.find(params[:id])
   end
 
   private
     def song_params
-      params.require(:song).permit(:title, :genre)
+      params.require(:song).permit(:title, :genre, :artist_id)
     end
 end

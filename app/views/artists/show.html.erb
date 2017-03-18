@@ -12,7 +12,7 @@
 <% if @artist.songs.any? %>
   <ul>
     <% @artist.songs.each do |song| %>
-      <li><%= song.title %></li>
+      <li><%=link_to song.title, song_path(song.id) %></li>
     <% end %>
   </ul>
 <% else %>
