@@ -6,8 +6,10 @@
   <%= f.label :genre %>
   <%= f.text_field :genre %>
 
-  <%= f.label :image_url %>
-  <%= f.text_field :image_url %>
+  <%= f.label :artist_id %>
+  <%= f.collection_select(:artist_id, Artist.all, :id, :name) %>
+
+<% end %>
 
   <%= f.submit (@song.new_record? ? "Create" : "Update") %>
 <% end %>
