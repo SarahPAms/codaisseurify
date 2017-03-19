@@ -1,29 +1,35 @@
 class SongsController < ApplicationController
 
   def index
-    @songs = Song.all
+    @song = Song.all
   end
 
   def show
-    @songs = Song.find(params[:id])
+    @song = Song.find(params[:id])
   end
 
   def new
-    @songs = Song.new
+    @song = Song.new
   end
 
   def create
-    @songs = Song.new(song_params)
+    @song = Song.new(song_params)
 
-    if @songs.save
-        redirect_to @songs
+    if @song.save
+        redirect_to @song
     else
       render "new", notice: "Song has not been saved"
     end
   end
 
   def edit
-    @songs = Song.find(params[:id])
+    @song = Song.find(params[:id])
+  end
+
+  def destroy
+    @song = Song.find(params[:id])
+    @song.destroy
+    redirect_to songs_path
   end
 
   private

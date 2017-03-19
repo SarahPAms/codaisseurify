@@ -1,5 +1,5 @@
 
-<%= form_for @songs do |f| %>
+<%= form_for @song do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
 
@@ -9,5 +9,5 @@
   <%= f.label :artist_id %>
   <%= f.collection_select(:artist_id, Artist.all, :id, :name) %>
 
-  <%= f.submit (@songs.new_record? ? "Create" : "Update") %>
+  <%= f.submit (@song.new_record? ? "Create" : "Update") %>
 <% end %>

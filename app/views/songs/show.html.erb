@@ -1,5 +1,12 @@
-<h1><%= @songs.title %></h1>
+<h1><%= @song.title %></h1>
 
-  <p>Genre: <%= @songs.genre %></p>
-  <p>Artist: <%= @songs.artist.name %></p>
-  <p>About the artist: <%= @songs.artist.bio %></p>
+  <p>Genre: <%= @song.genre %></p>
+  <p>Artist: <%= @song.artist.name %></p>
+  <p>About the artist: <%= @song.artist.bio %></p>
+
+
+
+
+
+<%= link_to "[Edit]", edit_song_path(@song.id) %>
+<%= link_to "[Delete]", song_path(@song.id), method: :delete, data: { confirm: "Are you sure?" } %>
