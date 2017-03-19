@@ -1,7 +1,7 @@
-<h1><%= @artist.name %></h1>
+<h1 class="text-center"><%= @artist.name %></h1>
 
 
-<%= image_tag @artist.picture %>
+<%= image_tag @artist.picture, class: "img img-circle img-center" %>
 <p><%= @artist.name %></p>
 <p>born: <%= @artist.born.to_date %></p>
 <p>died: <%= @artist.died.to_date %></p>
@@ -19,4 +19,5 @@
   <p>This artist doesn't have any songs.</p>
 <% end %>
 
+<%= link_to "Add a Song", new_song_path, class: " btn btn-default" %>
 <%= link_to "Delete", artist_path(@artist.id), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" } %>

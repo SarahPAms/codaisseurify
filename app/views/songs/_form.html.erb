@@ -1,13 +1,24 @@
 
-<%= form_for @song do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+    <%= form_for @song do |f| %>
 
-  <%= f.label :genre %>
-  <%= f.text_field :genre %>
 
-  <%= f.label :artist_id %>
-  <%= f.collection_select(:artist_id, Artist.all, :id, :name) %>
 
-  <%= f.submit (@song.new_record? ? "Create" : "Update") %>
-<% end %>
+      <div class="form-group">
+        <p><%= f.label :title %></p>
+        <p><%= f.text_field :title %></p>
+      </div>
+
+      <div class="form-group">
+        <p><%= f.label :Genre %></p>
+        <p><%= f.text_field :genre %></p>
+      </div>
+
+      <div class="form-group">
+        <p><%= f.label :artist_id %></p>
+        <p><%= f.collection_select(:artist_id, Artist.all, :id, :name) %></p>
+      </div>
+
+
+      <div class="actions">
+          <%= f.submit (@song.new_record? ? "Create" : "Update") %>
+<%end%>
