@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :songs do
-    title { Faker::HarryPotter.quote }
+  factory :song do
+    title { Faker::Lorem.sentence}
   end
 end
