@@ -1,2 +1,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+a {
+  color: #0d0e0d
+}
+
+a:hover {
+  text-decoration: none;
+  color: #96131f;
+}
+
+li a {
+  text-decoration: none;
+}

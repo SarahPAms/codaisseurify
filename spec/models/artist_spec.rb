@@ -1,22 +1,23 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Artist, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-
-  describe "association with songs" do
-    let(:artist) { create :artist }
-    let!(:song) { create :song, artist: artist }
-
-    it "has many songs" do
-      song1 = artist.songs.new(title: "Bleep blap bloop")
-      song2 = artist.songs.new(title: "Yaddah yaddah yaddah")
-
-      expect(artist.songs).to include(song1)
-      expect(artist.songs).to include(song2)
+  describe "validations" do
+    it "is invalid without a name" do
+      artist = Artist.new(name: "")
+      artist.valid?
+      expect(artist.errors).to have_key(:name)
     end
 
-    it "deletes associated songs" do
-      expect { artist.destroy }.to change(Song, :count).by(-1)
+    it "is invalid without a birth date" do
+      artist = Artist.new(born: "")
+      artist.valid?
+      expect(artist.errors).to have_key(:born)
+    end
+
+    it "is invalid if the death date is after today" do
+      artist = Artist.new(died: 2.days.from_now)
+      artist.valid?
+      expect(artist.errors).to have_key(:died)
     end
   end
 end
